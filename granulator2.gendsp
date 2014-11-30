@@ -1,0 +1,275 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 6,
+			"minor" : 1,
+			"revision" : 9,
+			"architecture" : "x86"
+		}
+,
+		"rect" : [ 8.0, 50.0, 789.0, 664.0 ],
+		"bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ],
+		"bglocked" : 0,
+		"openinpresentation" : 0,
+		"default_fontsize" : 10.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 0,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 0,
+		"statusbarvisible" : 2,
+		"toolbarvisible" : 1,
+		"boxanimatetime" : 200,
+		"imprint" : 0,
+		"enablehscroll" : 1,
+		"enablevscroll" : 1,
+		"devicewidth" : 0.0,
+		"description" : "",
+		"digest" : "",
+		"tags" : "",
+		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-14",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 717.0, 643.0, 33.0, 18.0 ],
+					"text" : "out 4"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-11",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 717.0, 10.0, 27.0, 18.0 ],
+					"text" : "in 6"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 483.666656, 643.0, 33.0, 18.0 ],
+					"text" : "out 3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 250.333328, 643.0, 33.0, 18.0 ],
+					"text" : "out 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 572.0, 10.0, 27.0, 18.0 ],
+					"text" : "in 5"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 433.25, 10.0, 27.0, 18.0 ],
+					"text" : "in 4"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-3",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 294.5, 10.0, 27.0, 18.0 ],
+					"text" : "in 3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 155.75, 10.0, 27.0, 18.0 ],
+					"text" : "in 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "//set delay memory and max voices here\r\nDelay del(960000);\r\n\r\nData voices(64, 6); //cur, start, length, rate, amp, pan\r\nData envelope(44100);\r\n\r\nHistory boundactive(0); //upper bound on the number of active voices, for efficiency\r\nHistory init(0); //flag to init data\r\nHistory dirty(0); //anything older in the delay line should be zeroed\r\n\r\nParam minrate(.0625);\r\nParam maxvoices(8);\r\n//Param aa_amount(2);\r\nParam ramp(441);\r\nParam clear(0);\r\n\r\ndel.write(in1);\r\n\r\n//channel indeces of voice params\r\nchan_cur = 0;\r\nchan_del = 1;\r\nchan_length = 2;\r\nchan_rate = 3;\r\nchan_amp = 4;\r\nchan_pan = 5;\r\n\r\nrampsize = dim(ramp);\r\nmaxvoices_int = min(maxvoices, dim(voices));\r\n\r\nif(clear > 0){\r\n\tdirty=0;\r\n\tinit=0;\r\n}\r\n\r\n//init stopped voices\r\nif(!init){\r\n\tfor(i=0; i<dim(voices); i+=1){\r\n\t\tpoke(voices, 0, i, chan_cur);\r\n\t\tpoke(voices, 0, i, chan_del);\r\n\t\tpoke(voices, 0, i, chan_length);\r\n\t\tpoke(voices, 0, i, chan_rate);\r\n\t\tpoke(voices, 0, i, chan_amp);\r\n\t\tpoke(voices, 0, i, chan_pan);\r\n\t}\r\n\tinit = 1;\r\n}\r\n\r\n//aa0_1, aa1_1 = peek(cbuf, bufpos-1, boundmode = \"wrap\", channels = 2);\r\n//aa0_2, aa1_2 = peek(cbuf, bufpos-2, boundmode = \"wrap\", channels = 2);\r\n//aa0_3, aa1_3 = peek(cbuf, bufpos-3, boundmode = \"wrap\", channels = 2);\r\n//aa0_3, aa1_4 = peek(cbuf, bufpos-4, boundmode = \"wrap\", channels = 2);\r\n\r\n//x1 = exp(-.125*pi);\r\n\r\n//poke(cbuf, in1, bufpos, 0);\r\n//poke(cbuf, (1-x1)*(1-x1)*(1-x1)*(1-x1)*in1+x1*(4*aa1_1+x1*(-6*aa1_2+x1*(4*aa1_3-x1*aa1_4))), bufpos, 1);\r\n\r\n//trigger voices from in2\r\nnewvoice = in2>0;\r\n\r\n//grain params from in3+\r\n//in5 gives playback rate\r\nnewvoicerate = in5;\r\n//in4 gives played length in ms; convert to sampled length in samps; can't be longer than delay line\r\nnewvoicelength = minimum(mstosamps(in4)*newvoicerate, 960000);\r\n//in3 gives initial delay for voice; make sure it's long enough to play the whole grain\r\nnewvoicedelay = maximum(mstosamps(in3), newvoicelength*(1-1/newvoicerate));\r\n//in6 gives pan\r\nnewvoicepan = in6; \r\n\r\nnew_boundactive = 0;\r\ntrueactive = 0;\r\naccl = 0; accr = 0; accc = 0;\r\nfor(i=0; i<=boundactive && i<maxvoices_int; i+=1){\r\n \tcur, cur_del, length, rate, amp, pan = peek(voices, i, channels=6);\r\n\t//if current voice is not ongoing,\r\n\t//and there is a new voice to trigger, put it here\r\n\tif(cur>=length && newvoice && newvoicerate>=minrate){\r\n\t\tpoke(voices, 0, i, chan_cur);\r\n\t\tpoke(voices, newvoicedelay, i, chan_del);\r\n\t\tpoke(voices, newvoicelength, i, chan_length);\r\n\t\tpoke(voices, newvoicerate, i, chan_rate);\r\n\t\tpoke(voices, newvoice, i, chan_amp);\r\n\t\tpoke(voices, newvoicepan, i, chan_pan);\r\n\t\tnewvoice = 0;\r\n\t}\r\n\t//now if there is a voice, accumulate signal\r\n\tif(cur<length){\r\n\t\ttrueactive+=1; //count active voices\r\n\t\tnew_boundactive = i+1;//set upper bound on active voices\r\n\t\t//aa0 = peek(cbuf, start+cur, boundmode=\"wrap\", interp=\"linear\");\r\n\t\t//aa0, aa1 = peek(cbuf, start+cur, channels = 2, boundmode=\"wrap\", interp=\"linear\");\r\n\t\t//aa1 = peek(cbuf1, (start+cur)*.5-1, boundmode=\"wrap\", interp=\"linear\");\r\n\t\t//mix1 = clip((rate-1), 0, 1);\r\n\t\t//mix2 = clip((rate-2)*(1/2), 0, 1);\r\n\t\t//mix3 = clip((rate-4)*(1/4), 0, 1);\r\n\t\t//mix4 = clip((rate-8)*(1/8), 0, 1);\r\n\t\t//mix5 = clip((rate-16)*(1/16), 0, 1);\r\n\t\t//samp = aa0+(aa1-aa0)*mix1;//+aa2*mix2+aa3*mix3+aa4*mix4+aa5*mix5;\r\n\t\tsamp = (cur_del<dirty)*del.read(cur_del, interp = \"linear\");\r\n\t\tphase = cur/length;\r\n\t\tenv = sample(envelope, phase);\r\n\t\trampup = clip(cur/(rate*ramp), 0, 1);\r\n\t\trampdown = clip((length-cur)/(rate*ramp), 0, 1);\r\n\t\tsource = samp*env*rampup*rampdown;\r\n\t\taccl += amp*(pan+1)*(.5)*source;\r\n\t\taccr += amp*(1-pan)*(.5)*source;\r\n\t\taccc += source;\r\n\t\t//update cur position\r\n\t\tpoke(voices, cur+rate, i, chan_cur);\r\n\t\tpoke(voices, cur_del-rate+1, i, chan_del);\r\n\t}\r\n}\r\n\r\n//update histories\r\nboundactive = new_boundactive;\r\ndirty = clip(dirty+1,0,9600000);\r\n\r\nout1 = accl;\r\nout2 = accr;\r\nout3 = accc;\r\nout4 = trueactive;",
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-5",
+					"maxclass" : "codebox",
+					"numinlets" : 6,
+					"numoutlets" : 4,
+					"outlettype" : [ "", "", "", "" ],
+					"patching_rect" : [ 17.0, 37.0, 719.0, 597.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 17.0, 10.0, 27.0, 18.0 ],
+					"text" : "in 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 17.0, 643.0, 33.0, 18.0 ],
+					"text" : "out 1"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 5 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-11", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 2 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-9", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 3 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 4 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-7", 0 ]
+				}
+
+			}
+ ]
+	}
+
+}

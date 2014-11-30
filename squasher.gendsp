@@ -1,0 +1,139 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 6,
+			"minor" : 1,
+			"revision" : 9,
+			"architecture" : "x86"
+		}
+,
+		"rect" : [ 8.0, 50.0, 600.0, 531.0 ],
+		"bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ],
+		"bglocked" : 0,
+		"openinpresentation" : 0,
+		"default_fontsize" : 10.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 0,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 0,
+		"statusbarvisible" : 2,
+		"toolbarvisible" : 1,
+		"boxanimatetime" : 200,
+		"imprint" : 0,
+		"enablehscroll" : 1,
+		"enablevscroll" : 1,
+		"devicewidth" : 0.0,
+		"description" : "",
+		"digest" : "",
+		"tags" : "",
+		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 538.0, 7.0, 27.0, 18.0 ],
+					"text" : "in 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 305.0, 492.0, 33.0, 18.0 ],
+					"text" : "out 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "Param attack(1), release(100), lookahead(1); //in ms\r\nParam maxgain(24), noisefloor(-50);\r\nParam clear(0);\r\nHistory smooth_pow(1);\r\nHistory dirty(0);\r\nDelay del(samplerate*.1);\r\n\r\nif(clear > 0) dirty = 0;\r\n\r\ndel.write(in1);\r\n\r\n//limit minimum power to noise floor\r\ninst_pow = max(dbtoa(noisefloor), abs(in1));\r\n\r\natt = clip(attack,.01,100000);\r\nrel = clip(release,.01,100000);\r\n\r\neps_att = 1 - pow(2, -1/mstosamps(att));\r\neps_rel = 1 - pow(2, -1/mstosamps(rel));\r\neps = (inst_pow>smooth_pow)*eps_att + (inst_pow<smooth_pow)*eps_rel;\r\nsmooth_pow += eps*(inst_pow-smooth_pow);\r\n\r\n//apply gain up to maxgain\r\ninst_norm = min(dbtoa(maxgain), 1/smooth_pow);\r\n\r\ncur_del = clip(mstosamps(lookahead),0,10);\r\n\r\ndelayed = (cur_del<dirty)*del.read(cur_del);\r\n\r\nlimited = delayed*inst_norm;\r\n\r\nclipped = 2*(1/(1+exp(-1.66667*delayed)))-1;\r\n\r\nmixed = mix(clipped, limited, clip(in2,0,1));\r\n\r\ndirty = clip(dirty+1, 0, samplerate);\r\n\r\nout1 = fixnan(mixed);\r\nout2 = inst_norm;",
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-5",
+					"maxclass" : "codebox",
+					"numinlets" : 2,
+					"numoutlets" : 2,
+					"outlettype" : [ "", "" ],
+					"patching_rect" : [ 15.0, 34.0, 542.0, 450.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 15.0, 7.0, 27.0, 18.0 ],
+					"text" : "in 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 12.0, 493.0, 33.0, 18.0 ],
+					"text" : "out 1"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
+ ]
+	}
+
+}

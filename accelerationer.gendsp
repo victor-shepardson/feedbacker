@@ -1,0 +1,228 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 6,
+			"minor" : 1,
+			"revision" : 9,
+			"architecture" : "x86"
+		}
+,
+		"rect" : [ 8.0, 50.0, 801.0, 664.0 ],
+		"bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ],
+		"bglocked" : 0,
+		"openinpresentation" : 0,
+		"default_fontsize" : 10.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 0,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 0,
+		"statusbarvisible" : 2,
+		"toolbarvisible" : 1,
+		"boxanimatetime" : 200,
+		"imprint" : 0,
+		"enablehscroll" : 1,
+		"enablevscroll" : 1,
+		"devicewidth" : 0.0,
+		"description" : "",
+		"digest" : "",
+		"tags" : "",
+		"boxes" : [ 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 794.0, 6.0, 27.0, 18.0 ],
+					"text" : "in 3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 892.0, 839.0, 33.0, 18.0 ],
+					"text" : "out 5"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-7",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 672.5, 839.0, 33.0, 18.0 ],
+					"text" : "out 4"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-6",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 453.0, 839.0, 33.0, 18.0 ],
+					"text" : "out 3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-3",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 233.5, 839.0, 33.0, 18.0 ],
+					"text" : "out 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"code" : "update_phase(phase, period, inc){\r\n\tphase += inc/period;\r\n\twrapped = 0;\r\n\tif (phase >= 1){\r\n \t\tphase -= 1;\r\n\t\twrapped = 1;\r\n\t}\r\n\tif (phase < 0){\r\n \t\tphase += 1;\r\n\t\twrapped = 1;\r\n\t}\r\n\treturn phase, wrapped;\r\n}\r\n\r\nParam initial_period(1000); //length of beat of middle voice in ms\r\nParam downbeat(1); //beat of middle voice to start+change params on\r\nParam phasing_period(8); //number of beats of middle vocie to phase\r\nParam beats_faster(1); //number of additional beats in fast voice\r\nParam beats_slower(1); //number of fewer beats in slow voice\r\nParam direction(1); //new middle voice period from 1 - fast voice, 0 - middle voice, -1 - slow voice\r\n\r\nHistory time; //clock in ms\r\nHistory fast_period(1000), slow_period(1000), middle_period(1000);\r\nHistory fast_phase, slow_phase, middle_phase;\r\nHistory middle_count(0);\r\nHistory phasing_period_internal(8); //store internally so only changes when voices are in sync\r\n\r\n//run clock at rate given by left inlet\r\nelapsed = in1*sampstoms(1);\r\ntime += elapsed;\r\n\r\nvalid_params = phasing_period+beats_faster > 0 && phasing_period-beats_slower > 0 && initial_period > 0;\r\n\r\n//reset if zero in second inlet\r\nif(in2==0 && valid_params){\r\n\t//set initial values as if a phasing cycle was just about to end, so a new one will start immediately\r\n\tphasing_period_internal = phasing_period;\r\n\tmiddle_count = downbeat-1;\r\n\tmiddle_period = initial_period;\r\n\tfast_period = initial_period;\r\n\tslow_period = initial_period;\r\n\tfast_phase = wrap(mod((downbeat-1)*(phasing_period_internal+beats_faster)/phasing_period_internal, 1)-.00001,0,1);\r\n\tslow_phase = wrap(mod((downbeat-1)*(phasing_period_internal-beats_slower)/phasing_period_internal, 1)-.00001,0,1);\r\n\tmiddle_phase = .99999;\r\n}\r\n\t\r\n//only do stuff if clock is running and params are valid\r\nif(valid_params && elapsed!=0){\r\n\tcur_fast_period = fast_period;\r\n\tcur_slow_period = slow_period;\r\n\tcur_middle_period = middle_period;\r\n\t//if > 0 in third inlet, suppress phasing, lock to slow(1) middle(2) or fast(3)\r\n\tif(in3==1){\r\n\t\tcur_fast_period = slow_period;\r\n\t\tcur_middle_period = slow_period;\r\n\t}\r\n\tif(in3==2){\r\n\t\tcur_fast_period = middle_period;\r\n\t\tcur_slow_period = middle_period;\r\n\t}\r\n\tif(in3==3){\r\n\t\tcur_middle_period = fast_period;\r\n\t\tcur_slow_period = fast_period;\r\n\t}\r\n\tfast_phase, fast_wrapped = update_phase(fast_phase, cur_fast_period, elapsed);\r\n\tslow_phase, slow_wrapped = update_phase(slow_phase, cur_slow_period, elapsed);\r\n\tmiddle_phase, middle_wrapped = update_phase(middle_phase, cur_middle_period, elapsed);\r\n\r\n\t//keep track of beats of middle voice\r\n\tif(middle_wrapped && in3<=0){\r\n\t\tmiddle_count = wrap(middle_count+1, 1, phasing_period_internal+1);\r\n\t\t//if we have phased all the way around, change period of middle voice\r\n\t\tif(abs(middle_count-downbeat) < .5){\r\n\t\t\tif(direction > 0){\r\n\t\t\t\tmiddle_period = fast_period;\r\n\t\t\t}\r\n\t\t\telse if(direction < 0){\r\n\t\t\t\tmiddle_period = slow_period;\r\n\t\t\t}\r\n\t\t\tphasing_period_internal = phasing_period;\r\n\t\t\tfast_period = middle_period*phasing_period_internal/(phasing_period_internal+beats_faster);\r\n\t\t\tslow_period = middle_period*phasing_period_internal/(phasing_period_internal-beats_slower);\r\n\t\t}\r\n\t}\r\n\t\r\n\tout1 = fast_wrapped;\r\n\tout2 = middle_wrapped;\r\n\tout3 = slow_wrapped;\r\n}\r\nout4 = initial_period/middle_period;\r\nout5 = middle_count;",
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-5",
+					"maxclass" : "codebox",
+					"numinlets" : 3,
+					"numoutlets" : 5,
+					"outlettype" : [ "", "", "", "", "" ],
+					"patching_rect" : [ 14.0, 31.0, 897.0, 802.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 14.0, 6.0, 27.0, 18.0 ],
+					"text" : "in 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 712.0, 6.0, 27.0, 18.0 ],
+					"text" : "in 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 10.0,
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 14.0, 839.0, 33.0, 18.0 ],
+					"text" : "out 1"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-3", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 2 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-7", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-5", 4 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-5", 2 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-9", 0 ]
+				}
+
+			}
+ ]
+	}
+
+}

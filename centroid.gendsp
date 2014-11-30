@@ -1,0 +1,140 @@
+{
+	"patcher" : 	{
+		"fileversion" : 1,
+		"appversion" : 		{
+			"major" : 6,
+			"minor" : 1,
+			"revision" : 9,
+			"architecture" : "x86"
+		}
+,
+		"rect" : [ 32.0, 70.0, 797.0, 626.0 ],
+		"bgcolor" : [ 0.9, 0.9, 0.9, 1.0 ],
+		"bglocked" : 0,
+		"openinpresentation" : 0,
+		"default_fontsize" : 12.0,
+		"default_fontface" : 0,
+		"default_fontname" : "Arial",
+		"gridonopen" : 0,
+		"gridsize" : [ 15.0, 15.0 ],
+		"gridsnaponopen" : 0,
+		"statusbarvisible" : 2,
+		"toolbarvisible" : 1,
+		"boxanimatetime" : 200,
+		"imprint" : 0,
+		"enablehscroll" : 1,
+		"enablevscroll" : 1,
+		"devicewidth" : 0.0,
+		"description" : "",
+		"digest" : "",
+		"tags" : "",
+		"boxes" : [ 			{
+				"box" : 				{
+					"code" : "History centroid(30), centroid_smoothed(30);\r\nHistory sum_energy(0), sum_energy_index(0);\r\nParam discard(1);\r\nParam ramp(10);\r\nParam minval(30), maxval(20000);\r\nParam spectral_frame(256);\r\n\r\nreal = fixdenorm(fixnan(in1));\r\nimag = fixdenorm(fixnan(in2));\r\nindex = in3;\r\n\r\nenergy = real * real + imag * imag;\r\n\r\nepsilon = 1;\r\nif(ramp>0)\r\n\tepsilon = 1 - pow(.5, 1/mstosamps(ramp));\r\n\r\nif (index >= discard){\r\n\t// accumulate while the index is below (vectorsize - 1)\r\n\tsum_energy += energy;\r\n\tsum_energy_index += energy * index;\r\n}\r\nif (index == (spectral_frame-1)) {\r\n\t// we now have a full frame; recalculate val:\r\n\tcentroid_bin = sum_energy_index;\r\n \tif(sum_energy > 0)\r\n\t\tcentroid_bin /= sum_energy;\r\n\tcentroid = log(clip(centroid_bin * SAMPLERATE*.5/spectral_frame, minval, maxval));\r\n\tsum_energy = 0;\r\n\tsum_energy_index = 0;\r\n}\r\n\r\ncentroid_smoothed = centroid_smoothed + epsilon*(centroid-centroid_smoothed);\r\n\r\nout1 = exp(centroid_smoothed);",
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-26",
+					"maxclass" : "codebox",
+					"numinlets" : 3,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 40.0, 36.0, 686.0, 548.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-8",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 707.0, 8.0, 30.0, 20.0 ],
+					"text" : "in 3"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-1",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 40.0, 8.0, 30.0, 20.0 ],
+					"text" : "in 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 0,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 373.5, 8.0, 30.0, 20.0 ],
+					"text" : "in 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-4",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 40.0, 594.0, 37.0, 20.0 ],
+					"text" : "out 1"
+				}
+
+			}
+ ],
+		"lines" : [ 			{
+				"patchline" : 				{
+					"destination" : [ "obj-26", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-26", 1 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-2", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-4", 0 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-26", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-26", 2 ],
+					"disabled" : 0,
+					"hidden" : 0,
+					"source" : [ "obj-8", 0 ]
+				}
+
+			}
+ ]
+	}
+
+}
