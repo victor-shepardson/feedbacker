@@ -1,6 +1,6 @@
-# Feedbacker: A Software Instrument
+# Feedbacker: An Audio Feedback Software Instrument
 
-## Victor Shepardson | Dartmouth College Digital Musics
+### Victor Shepardson | Dartmouth College Digital Musics
 
 <img src="img/feedbacker-gui.png">
 
