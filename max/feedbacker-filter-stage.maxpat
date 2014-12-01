@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 170.0, 103.0, 665.0, 558.0 ],
+		"rect" : [ 70.0, 90.0, 665.0, 558.0 ],
 		"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -446,7 +446,7 @@
 					"outlettype" : [ "list", "float", "float", "float", "float", "list", "int" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 195.578979, 237.0, 78.866074, 43.0 ],
-					"setfilter" : [ 0, 4, 1, 0, 0, 440.083923, 1.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
+					"setfilter" : [ 0, 9, 1, 0, 0, 440.083923, 1.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 				}
 
 			}
@@ -540,7 +540,7 @@
 					"logfreq" : 0,
 					"markercolor" : [ 0.627451, 0.627451, 0.627451, 0.0 ],
 					"maxclass" : "filtergraph~",
-					"nfilters" : 3,
+					"nfilters" : 1,
 					"numinlets" : 8,
 					"numoutlets" : 7,
 					"outlettype" : [ "list", "float", "float", "float", "float", "list", "int" ],
@@ -549,7 +549,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 0.0, 0.0, 111.0, 70.0 ],
 					"range" : [ 0.0125, 3.2 ],
-					"setfilter" : [ 2, 0, 1, 0, 0, 90.0, 1.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1, 0, 1, 0, 0, 60.0, 1.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 1, 0, 0, 40.0, 0.2, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
+					"setfilter" : [ 0, 0, 1, 0, 0, 40.0, 0.2, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 				}
 
 			}
@@ -635,7 +635,7 @@
 					"logfreq" : 0,
 					"markercolor" : [ 0.627451, 0.627451, 0.627451, 0.0 ],
 					"maxclass" : "filtergraph~",
-					"nfilters" : 3,
+					"nfilters" : 1,
 					"numinlets" : 8,
 					"numoutlets" : 7,
 					"outlettype" : [ "list", "float", "float", "float", "float", "list", "int" ],
@@ -644,7 +644,7 @@
 					"presentation" : 1,
 					"presentation_rect" : [ 0.0, 0.0, 111.0, 70.0 ],
 					"range" : [ 0.0125, 3.2 ],
-					"setfilter" : [ 2, 0, 1, 0, 0, 90.0, 1.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1, 0, 1, 0, 0, 60.0, 1.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0, 0, 1, 0, 0, 40.0, 1.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
+					"setfilter" : [ 0, 0, 1, 0, 0, 40.0, 1.0, 2.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 				}
 
 			}
@@ -718,7 +718,7 @@
 					"outlettype" : [ "list", "float", "float", "float", "float", "list", "int" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 112.895935, 237.0, 78.866074, 43.0 ],
-					"setfilter" : [ 0, 4, 1, 0, 0, 440.083923, 1.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
+					"setfilter" : [ 0, 9, 1, 0, 0, 440.083923, 1.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
 				}
 
 			}
@@ -774,7 +774,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 54.5, 15.0, 25.0, 25.0 ]
 				}
 
@@ -786,7 +786,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 110.471924, 15.0, 25.0, 25.0 ]
 				}
 
@@ -1404,6 +1404,34 @@
 					"source" : [ "obj-98", 0 ]
 				}
 
+			}
+ ],
+		"parameters" : 		{
+			"obj-21" : [ "Resonance", "Reson", 0 ],
+			"obj-34" : [ "Filter Response", "live.tab", 0 ],
+			"obj-59" : [ "Balance", "Balance", 0 ]
+		}
+,
+		"dependency_cache" : [ 			{
+				"name" : "fancy-crossover.maxpat",
+				"bootpath" : "/Users/victor/Documents/GitHub/feedbacker/max",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "clearable.maxpat",
+				"bootpath" : "/Users/victor/Documents/GitHub/feedbacker/max",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "feedback.maxpat",
+				"bootpath" : "/Users/victor/Documents/GitHub/feedbacker/max",
+				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
 			}
  ]
 	}
