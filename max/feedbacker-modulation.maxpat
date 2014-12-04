@@ -146,8 +146,8 @@
 					"presentation_rect" : [ 71.0, 1.0, 39.0, 14.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_longname" : "VIbrato Bypass.",
-							"parameter_shortname" : "live.text",
+							"parameter_longname" : "Wiggle Bypass",
+							"parameter_shortname" : "Wiggle Bypass",
 							"parameter_type" : 2,
 							"parameter_mmax" : 1.0,
 							"parameter_enum" : [ "0", "1" ],
@@ -198,7 +198,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Serrator Bypass",
-							"parameter_shortname" : "live.text",
+							"parameter_shortname" : "Serrator Bypass",
 							"parameter_type" : 2,
 							"parameter_mmax" : 1.0,
 							"parameter_enum" : [ "0", "1" ],
@@ -306,7 +306,7 @@
 						"valueof" : 						{
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Serrator Rate",
-							"parameter_shortname" : "serrator",
+							"parameter_shortname" : "Serrator",
 							"parameter_type" : 0,
 							"parameter_mmin" : 0.5,
 							"parameter_mmax" : 30.0,
@@ -342,7 +342,7 @@
 						"valueof" : 						{
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Wiggle Amount",
-							"parameter_shortname" : "vibrato",
+							"parameter_shortname" : "Wiggle",
 							"parameter_type" : 0,
 							"parameter_mmax" : 1.0,
 							"parameter_initial_enable" : 1,
@@ -440,7 +440,7 @@
 					"bufsize" : 221,
 					"calccount" : 200,
 					"drawstyle" : 1,
-					"fgcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"fgcolor" : [ 0.0, 0.0, 0.0, 0.5 ],
 					"gridcolor" : [ 0.329412, 0.329412, 0.329412, 0.0 ],
 					"id" : "obj-85",
 					"maxclass" : "scope~",

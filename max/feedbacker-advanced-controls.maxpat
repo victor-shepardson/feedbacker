@@ -62,7 +62,7 @@
 						"valueof" : 						{
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Tones Per Octave (High)",
-							"parameter_shortname" : "auxmin",
+							"parameter_shortname" : "Tones Per Octave (High)",
 							"parameter_type" : 1,
 							"parameter_mmin" : 1.0,
 							"parameter_mmax" : 48.0,
@@ -115,7 +115,7 @@
 						"valueof" : 						{
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Tones Per Octave (Low)",
-							"parameter_shortname" : "auxmin",
+							"parameter_shortname" : "Tones Per Octave (Low)",
 							"parameter_type" : 1,
 							"parameter_mmin" : 1.0,
 							"parameter_mmax" : 48.0,
@@ -149,7 +149,6 @@
 					"activebgcolor" : [ 0.541176, 0.541176, 0.941176, 1.0 ],
 					"annotation" : "Choose envelope for low granulator.",
 					"bordercolor" : [ 0.152941, 0.152941, 0.152941, 1.0 ],
-					"focusbordercolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"fontsize" : 14.0,
 					"id" : "obj-4",
 					"maxclass" : "live.menu",
@@ -186,7 +185,6 @@
 					"activebgcolor" : [ 0.941176, 0.541176, 0.541176, 1.0 ],
 					"annotation" : "Choose envelope for high granulator.",
 					"bordercolor" : [ 0.152941, 0.152941, 0.152941, 1.0 ],
-					"focusbordercolor" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"fontsize" : 14.0,
 					"id" : "obj-178",
 					"maxclass" : "live.menu",
@@ -365,7 +363,7 @@
 						"valueof" : 						{
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Min Grain Level (High)",
-							"parameter_shortname" : "auxmin",
+							"parameter_shortname" : "Min Grain Level (High)",
 							"parameter_type" : 0,
 							"parameter_mmin" : -70.0,
 							"parameter_mmax" : 0.0,
@@ -437,7 +435,7 @@
 						"valueof" : 						{
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Min Grain Level (Low)",
-							"parameter_shortname" : "auxmin",
+							"parameter_shortname" : "Min Grain Level (Low)",
 							"parameter_type" : 0,
 							"parameter_mmin" : -70.0,
 							"parameter_mmax" : 0.0,
@@ -528,7 +526,7 @@
 						"valueof" : 						{
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Centroid Max",
-							"parameter_shortname" : "centroidmax",
+							"parameter_shortname" : "Centroid Max",
 							"parameter_type" : 0,
 							"parameter_mmin" : 20.0,
 							"parameter_mmax" : 22050.0,
@@ -562,10 +560,10 @@
 						"valueof" : 						{
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Centroid Min",
-							"parameter_shortname" : "centroidmin",
+							"parameter_shortname" : "Centroid Min",
 							"parameter_type" : 0,
 							"parameter_mmin" : 20.0,
-							"parameter_mmax" : 22050.0,
+							"parameter_mmax" : 20000.0,
 							"parameter_initial_enable" : 1,
 							"parameter_initial" : [ 100.0 ],
 							"parameter_unitstyle" : 3,
@@ -613,7 +611,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Master Ramp Time",
-							"parameter_shortname" : "live.numbox",
+							"parameter_shortname" : "Master Ramp Time",
 							"parameter_type" : 0,
 							"parameter_mmax" : 10000.0,
 							"parameter_initial_enable" : 1,

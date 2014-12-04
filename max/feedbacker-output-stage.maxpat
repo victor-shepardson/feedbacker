@@ -614,7 +614,8 @@
 							"parameter_initial_enable" : 1,
 							"parameter_initial" : [ 0.0 ],
 							"parameter_unitstyle" : 4,
-							"parameter_speedlim" : 0.0
+							"parameter_speedlim" : 0.0,
+							"parameter_invisible" : 2
 						}
 
 					}

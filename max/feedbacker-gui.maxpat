@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 8.0, 50.0, 997.0, 664.0 ],
+		"rect" : [ 8.0, 50.0, 972.0, 664.0 ],
 		"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -178,7 +178,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 485.562042, 32.0, 25.0, 25.0 ]
 				}
 
@@ -190,7 +190,7 @@
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "" ],
+					"outlettype" : [ "signal" ],
 					"patching_rect" : [ 443.0, 32.0, 25.0, 25.0 ]
 				}
 
@@ -215,7 +215,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Show Output Stage",
-							"parameter_shortname" : "show output",
+							"parameter_shortname" : "Show Output Stage",
 							"parameter_type" : 2,
 							"parameter_mmax" : 1.0,
 							"parameter_enum" : [ "0", "1" ],
@@ -252,7 +252,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Show Input Stage",
-							"parameter_shortname" : "show input",
+							"parameter_shortname" : "Show Input Stage",
 							"parameter_type" : 2,
 							"parameter_mmax" : 1.0,
 							"parameter_enum" : [ "0", "1" ],
@@ -342,7 +342,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Show Granulator Stage",
-							"parameter_shortname" : "show granulators",
+							"parameter_shortname" : "Show Granulator Stage",
 							"parameter_type" : 2,
 							"parameter_mmax" : 1.0,
 							"parameter_enum" : [ "0", "1" ],
@@ -379,7 +379,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Show Filter Stage",
-							"parameter_shortname" : "show filters",
+							"parameter_shortname" : "Show Filter Stage",
 							"parameter_type" : 2,
 							"parameter_mmax" : 1.0,
 							"parameter_enum" : [ "0", "1" ],
@@ -418,7 +418,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Show Modulation Stage",
-							"parameter_shortname" : "show modulation",
+							"parameter_shortname" : "Show Modulation Stage",
 							"parameter_type" : 2,
 							"parameter_mmax" : 1.0,
 							"parameter_enum" : [ "0", "1" ],
@@ -615,8 +615,8 @@
 					"presentation_rect" : [ 559.0, 3.0, 8.0, 163.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_longname" : "live.gain~[5]",
-							"parameter_shortname" : "live.gain~",
+							"parameter_longname" : "Show Advanced Controls",
+							"parameter_shortname" : "Show Advanced Controls",
 							"parameter_type" : 2,
 							"parameter_mmax" : 1.0,
 							"parameter_enum" : [ "0", "1" ],
@@ -634,6 +634,7 @@
 			}
 , 			{
 				"box" : 				{
+					"hidden" : 1,
 					"id" : "obj-34",
 					"maxclass" : "bpatcher",
 					"name" : "feedbacker-advanced-controls.maxpat",
@@ -687,7 +688,7 @@
 					"outlettype" : [ "signal", "signal" ],
 					"patching_rect" : [ 393.0, 444.5, 94.0, 167.5 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 668.0, 3.0, 92.0, 166.0 ],
+					"presentation_rect" : [ 570.0, 3.0, 92.0, 166.0 ],
 					"varname" : "output"
 				}
 

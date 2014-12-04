@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 229.0, 93.0, 752.0, 567.0 ],
+		"rect" : [ 103.0, 93.0, 877.0, 567.0 ],
 		"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -117,7 +117,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Filter/Spectrum Display Mode",
-							"parameter_shortname" : "live.tab",
+							"parameter_shortname" : "Display Mode",
 							"parameter_type" : 2,
 							"parameter_enum" : [ "lin", "log" ],
 							"parameter_initial_enable" : 1,
@@ -294,7 +294,7 @@
 						"valueof" : 						{
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Mute High Granulator",
-							"parameter_shortname" : "higranon",
+							"parameter_shortname" : "Mute High",
 							"parameter_type" : 2,
 							"parameter_mmax" : 1.0,
 							"parameter_enum" : [ "mute", "on" ],
@@ -331,7 +331,7 @@
 						"valueof" : 						{
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Mute Low Granulator",
-							"parameter_shortname" : "lowgranon",
+							"parameter_shortname" : "Mute Low",
 							"parameter_type" : 2,
 							"parameter_mmax" : 1.0,
 							"parameter_enum" : [ "mute", "on" ],
@@ -505,13 +505,12 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Track Knob (Low)",
-							"parameter_shortname" : "live.toggle",
+							"parameter_shortname" : "Track Knob (Low)",
 							"parameter_type" : 2,
 							"parameter_mmax" : 1.0,
 							"parameter_enum" : [ "off", "on" ],
 							"parameter_initial_enable" : 1,
-							"parameter_initial" : [ 1.0 ],
-							"parameter_invisible" : 1
+							"parameter_initial" : [ 1.0 ]
 						}
 
 					}
@@ -538,13 +537,12 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Track Knob (High)",
-							"parameter_shortname" : "live.toggle",
+							"parameter_shortname" : "Track Knob (High)",
 							"parameter_type" : 2,
 							"parameter_mmax" : 1.0,
 							"parameter_enum" : [ "off", "on" ],
 							"parameter_initial_enable" : 1,
-							"parameter_initial" : [ 1.0 ],
-							"parameter_invisible" : 1
+							"parameter_initial" : [ 1.0 ]
 						}
 
 					}
@@ -722,8 +720,8 @@
 					"presentation_rect" : [ 158.0, 81.0, 36.0, 14.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_longname" : "High Granulator Detune",
-							"parameter_shortname" : "live.numbox",
+							"parameter_longname" : "High Granulator Tune",
+							"parameter_shortname" : "High Tune",
 							"parameter_type" : 0,
 							"parameter_mmax" : 1.0,
 							"parameter_initial_enable" : 1,
@@ -755,7 +753,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Low Granulator Detune",
-							"parameter_shortname" : "live.numbox",
+							"parameter_shortname" : "Low Tune",
 							"parameter_type" : 0,
 							"parameter_mmax" : 1.0,
 							"parameter_initial_enable" : 1,
@@ -815,7 +813,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "High Granulator Scatter",
-							"parameter_shortname" : "live.numbox",
+							"parameter_shortname" : "High Scatter",
 							"parameter_type" : 0,
 							"parameter_mmax" : 1.0,
 							"parameter_initial_enable" : 1,
@@ -847,7 +845,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Low Granulator Scatter",
-							"parameter_shortname" : "live.numbox",
+							"parameter_shortname" : "Low Scatter",
 							"parameter_type" : 0,
 							"parameter_mmax" : 1.0,
 							"parameter_initial_enable" : 1,
@@ -907,7 +905,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "High Granulator Spray",
-							"parameter_shortname" : "live.numbox",
+							"parameter_shortname" : "High Spray",
 							"parameter_type" : 0,
 							"parameter_mmax" : 30.0,
 							"parameter_initial_enable" : 1,
@@ -940,7 +938,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Low Granulator Spray",
-							"parameter_shortname" : "live.numbox",
+							"parameter_shortname" : "Low Spray",
 							"parameter_type" : 0,
 							"parameter_mmax" : 30.0,
 							"parameter_initial_enable" : 1,
@@ -1001,7 +999,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "High Granulator Grain Length",
-							"parameter_shortname" : "live.numbox",
+							"parameter_shortname" : "High Length",
 							"parameter_type" : 0,
 							"parameter_mmin" : 10.0,
 							"parameter_mmax" : 5000.0,
@@ -1035,7 +1033,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Low Granulator Grain Length",
-							"parameter_shortname" : "live.numbox",
+							"parameter_shortname" : "Low Length",
 							"parameter_type" : 0,
 							"parameter_mmin" : 10.0,
 							"parameter_mmax" : 5000.0,

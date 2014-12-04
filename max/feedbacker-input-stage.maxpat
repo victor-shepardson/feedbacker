@@ -8,7 +8,7 @@
 			"architecture" : "x86"
 		}
 ,
-		"rect" : [ 195.0, 97.0, 496.0, 541.0 ],
+		"rect" : [ 125.0, 109.0, 622.0, 541.0 ],
 		"bgcolor" : [ 1.0, 1.0, 1.0, 0.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
@@ -75,7 +75,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "External Input Gain",
-							"parameter_shortname" : "live.numbox",
+							"parameter_shortname" : "External Input Gain",
 							"parameter_type" : 0,
 							"parameter_mmin" : -70.0,
 							"parameter_mmax" : 6.0,
@@ -134,7 +134,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Feedback Gain",
-							"parameter_shortname" : "live.numbox",
+							"parameter_shortname" : "Feedback Gain",
 							"parameter_type" : 0,
 							"parameter_mmin" : -70.0,
 							"parameter_mmax" : 6.0,
@@ -164,8 +164,8 @@
 					"presentation_rect" : [ 60.0, 84.0, 44.0, 15.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_longname" : "Internal Oscillator Gain",
-							"parameter_shortname" : "live.numbox",
+							"parameter_longname" : "Oscillator Gain",
+							"parameter_shortname" : "Oscillator Gain",
 							"parameter_type" : 0,
 							"parameter_mmin" : -70.0,
 							"parameter_mmax" : 6.0,
@@ -226,7 +226,8 @@
 							"parameter_mmax" : 6.0,
 							"parameter_initial_enable" : 1,
 							"parameter_initial" : [ -12 ],
-							"parameter_unitstyle" : 4
+							"parameter_unitstyle" : 4,
+							"parameter_invisible" : 2
 						}
 
 					}
@@ -698,7 +699,7 @@
 						"valueof" : 						{
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Track Centroid",
-							"parameter_shortname" : "live.text[1]",
+							"parameter_shortname" : "Track Centroid",
 							"parameter_type" : 2,
 							"parameter_mmax" : 1.0,
 							"parameter_enum" : [ "val1", "val2" ],
@@ -821,7 +822,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Oscillator Pitch",
-							"parameter_shortname" : "pitch",
+							"parameter_shortname" : "Oscillator Pitch",
 							"parameter_type" : 0,
 							"parameter_initial_enable" : 1,
 							"parameter_initial" : [ 69 ],
@@ -851,7 +852,7 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Oscillator Frequency",
-							"parameter_shortname" : "frequency",
+							"parameter_shortname" : "Oscillator Frequency",
 							"parameter_type" : 0,
 							"parameter_mmin" : 20.0,
 							"parameter_mmax" : 20000.0,
@@ -886,8 +887,8 @@
 					"presentation_rect" : [ 9.5, 45.0, 49.0, 20.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_longname" : "Waveform",
-							"parameter_shortname" : "waveform",
+							"parameter_longname" : "Oscillator Waveform",
+							"parameter_shortname" : "Waveform",
 							"parameter_type" : 2,
 							"parameter_enum" : [ "off", "train", "square", "saw", "sine" ],
 							"parameter_initial_enable" : 1,
@@ -941,13 +942,14 @@
 						"valueof" : 						{
 							"parameter_linknames" : 1,
 							"parameter_longname" : "Internal Oscillator Gain Fader",
-							"parameter_shortname" : "internal oscillator",
+							"parameter_shortname" : "Internal Oscillator Gain Fader",
 							"parameter_type" : 0,
 							"parameter_mmin" : -70.0,
 							"parameter_mmax" : 6.0,
 							"parameter_initial_enable" : 1,
 							"parameter_initial" : [ -12 ],
-							"parameter_unitstyle" : 4
+							"parameter_unitstyle" : 4,
+							"parameter_invisible" : 2
 						}
 
 					}
@@ -1171,13 +1173,14 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Feedback Gain Fader",
-							"parameter_shortname" : "feedback",
+							"parameter_shortname" : "Feedback Gain Fader",
 							"parameter_type" : 0,
 							"parameter_mmin" : -70.0,
 							"parameter_mmax" : 6.0,
 							"parameter_initial_enable" : 1,
 							"parameter_initial" : [ -12 ],
-							"parameter_unitstyle" : 4
+							"parameter_unitstyle" : 4,
+							"parameter_invisible" : 2
 						}
 
 					}
