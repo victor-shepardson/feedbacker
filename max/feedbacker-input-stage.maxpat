@@ -71,7 +71,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 99.0, 111.735168, 37.0, 15.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 60.0, 15.0, 44.0, 15.0 ],
+					"presentation_rect" : [ 60.0, 15.0, 43.0, 15.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "External Input Gain",
@@ -130,7 +130,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 23.5, 217.985168, 37.0, 15.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 60.0, 121.0, 44.0, 15.0 ],
+					"presentation_rect" : [ 60.0, 121.0, 43.0, 15.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Feedback Gain",
@@ -161,7 +161,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 144.5, 217.985168, 37.0, 15.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 60.0, 84.0, 44.0, 15.0 ],
+					"presentation_rect" : [ 60.0, 84.0, 43.0, 15.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Oscillator Gain",
@@ -818,7 +818,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 255.837769, 197.485168, 39.0, 15.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 60.0, 65.0, 44.0, 15.0 ],
+					"presentation_rect" : [ 60.0, 65.0, 43.0, 15.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "Oscillator Pitch",

@@ -752,7 +752,7 @@
 					"presentation_rect" : [ 158.0, 96.0, 36.0, 14.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_longname" : "Low Granulator Detune",
+							"parameter_longname" : "Low Granulator Tune",
 							"parameter_shortname" : "Low Tune",
 							"parameter_type" : 0,
 							"parameter_mmax" : 1.0,
@@ -904,8 +904,8 @@
 					"presentation_rect" : [ 84.0, 81.0, 36.0, 14.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_longname" : "High Granulator Spray",
-							"parameter_shortname" : "High Spray",
+							"parameter_longname" : "High Granulator Density",
+							"parameter_shortname" : "High Density",
 							"parameter_type" : 0,
 							"parameter_mmax" : 30.0,
 							"parameter_initial_enable" : 1,
@@ -937,8 +937,8 @@
 					"presentation_rect" : [ 84.0, 96.0, 36.0, 14.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_longname" : "Low Granulator Spray",
-							"parameter_shortname" : "Low Spray",
+							"parameter_longname" : "Low Granulator Density",
+							"parameter_shortname" : "Low Density",
 							"parameter_type" : 0,
 							"parameter_mmax" : 30.0,
 							"parameter_initial_enable" : 1,
@@ -1213,8 +1213,8 @@
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_linknames" : 1,
-							"parameter_longname" : "Spray",
-							"parameter_shortname" : "Spray",
+							"parameter_longname" : "Density",
+							"parameter_shortname" : "Density",
 							"parameter_type" : 0,
 							"parameter_mmax" : 30.0,
 							"parameter_initial_enable" : 1,
@@ -1227,7 +1227,7 @@
 ,
 					"showname" : 0,
 					"shownumber" : 0,
-					"varname" : "Spray"
+					"varname" : "Density"
 				}
 
 			}
