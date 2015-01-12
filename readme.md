@@ -54,7 +54,7 @@ Serrator divides the signal into blocks at a rate which is exposed to the player
 
 ### Filters
 
-The filter module splits the signal into equal power low and high frequency halves, using a crossover filter pair around the spectral centroid. An additional filter shares the same center frequency, and can be chosen to be band pass, band stop, or off. The resonance of this filter is exposed to the player. A control balancing the amplitude of low and high frequency parts is also available. The low and high components are passed as two channels to the next module. A graph of gain as a function of frequency shows the filter response for each channel, with the low frequency channel colored blue and the high colored red.
+The filter module splits the signal into equal power low and high frequency halves, using a crossover filter pair around the spectral centroid. Optional bandpass and bandstop filters share the same center frequency; the resonance of these filters are exposed to the player. A control balancing the amplitude of low and high frequency parts is also available. The low and high components are passed as two channels to the next module. A graph of gain as a function of frequency shows the filter response for each channel, with the low frequency channel colored blue and the high colored red.
 
 ### Granulation
 
